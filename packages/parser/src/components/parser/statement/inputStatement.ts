@@ -9,14 +9,14 @@ import Expression from "./expression";
 // this is just a copy of print statement
 export default class InputStatement extends Statement {
   getStatement(): ASTNode {
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BOL_BHAI_TYPE);
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SUNO_BHAI_TYPE); // starts at suno bhai 
 
     const expressions = this._getExpressionList();
 
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE); // ends at semi colon (duh)
 
     return {
-      type: NodeType.PrintStatement,
+      type: NodeType.InputStatement,
       expressions,
     };
   }
@@ -27,7 +27,7 @@ export default class InputStatement extends Statement {
     do {
       expressions.push(this._getExpression());
     } while (
-      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE &&
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE && // uses comma to seperate different inputs
       this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
     );
 

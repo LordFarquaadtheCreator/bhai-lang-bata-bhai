@@ -26,5 +26,6 @@ export const NodeType = {
   StringLiteral: "StringLiteral",
   NullLiteral: "NullLiteral",
   VariableDeclaration: "VariableDeclaration",
+  InputStatement: "InputStatement",
   Program: "Program",
 } as const;
