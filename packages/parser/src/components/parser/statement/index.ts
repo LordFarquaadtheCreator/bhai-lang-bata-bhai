@@ -40,6 +40,9 @@ export default abstract class Statement {
       case TokenTypes.AGLA_DEKH_BHAI:
         return BhaiLangModule.getContinueStatement();
 
+      case TokenTypes.SUNO_BHAI_TYPE:
+        return BhaiLangModule.getInputStatement();
+
       default:
         return BhaiLangModule.getExpressionStatement();
     }

@@ -35,6 +35,8 @@ import RelationalExpression
   from "../components/parser/statement/expression/relationalExpression";
 import ExpressionStatement
   from "../components/parser/statement/expressionStatement";
+import InputStatement
+  from "../components/parser/statement/inputStatement";
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
@@ -78,6 +80,7 @@ export default class BhaiLangModule {
   private static _breakStatement?: BreakStatement;
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
+  private static _inputStatement?: InputStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -139,6 +142,14 @@ export default class BhaiLangModule {
     }
 
     return this._continueStatement;
+  }
+
+  static getInputStatement() {
+    if(!this._inputStatement){
+      this._inputStatement = new InputStatement(this.getTokenExecutor());
+    }
+
+    return this._inputStatement;
   }
 
   static getWhileStatement() {
